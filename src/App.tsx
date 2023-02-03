@@ -1,34 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./index.css";
+import Layout from "./components/Layout";
+import useForecast from "./hooks/queries/useForecast";
+import { H1 } from "./components/Typography";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { data, isLoading, isError } = useForecast();
+  console.log(isLoading, data);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Layout>
+      <div className="flex flex-col items-center gap-4">
+        <H1>Weather in Gothenburg :sun:</H1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    </Layout>
+  );
 }
 
-export default App
+export default App;
