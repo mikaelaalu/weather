@@ -8,6 +8,10 @@ export const H1: React.FC<Props> = ({ children }) => (
   <h1 className="text-2xl text-center"> {children}</h1>
 );
 
+export const H2: React.FC<Props> = ({ children }) => (
+  <h2 className="text-xl text-center"> {children}</h2>
+);
+
 export const Paragraph: React.FC<Props> = ({ children }) => (
   <p className="text-base"> {children}</p>
 );
