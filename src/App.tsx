@@ -2,7 +2,7 @@ import { addDays } from "date-fns";
 import "./index.css";
 import Layout from "./components/Layout";
 import useForecast from "./hooks/queries/useForecast";
-import { H1, Paragraph } from "./components/Typography";
+import { H1, ParagraphBold } from "./components/Typography";
 import { formatDate } from "./helpers";
 import WeatherInfo from "./components/WeatherInfo";
 
@@ -20,16 +20,17 @@ function App() {
   const fourDaysAhead = getWeatherAhead(4);
 
   if (isLoading) {
-    <Paragraph>Loading forecast</Paragraph>;
+    <ParagraphBold>Loading forecast</ParagraphBold>;
   }
 
   if (isError) {
-    <Paragraph>An error accoured, try again!</Paragraph>;
+    <ParagraphBold>An error occurred, try again!</ParagraphBold>;
   }
+
   return (
     <Layout>
-      <div className="flex flex-col items-center gap-4">
-        <H1>Weather in Gothenburg :sun:</H1>
+      <div className="flex flex-col items-center">
+        <H1>Weather in Gothenburg ☀️</H1>
         {oneDayAhead && <WeatherInfo weather={oneDayAhead} />}
         {twoDaysAhead && <WeatherInfo weather={twoDaysAhead} />}
         {threeDaysAhead && <WeatherInfo weather={threeDaysAhead} />}

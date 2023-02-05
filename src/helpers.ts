@@ -1,20 +1,23 @@
 import { format } from "date-fns";
 
-export const getMinTemp = (temp: number[]) => Math.min(...temp);
+export const getMinNumber = (temp: number[]) => Math.min(...temp).toFixed(1);
 
-export const getMaxTemp = (temp: number[]) => Math.max(...temp);
+export const getMaxNumber = (temp: number[]) => Math.max(...temp).toFixed(1);
 
-export const getAverageTemp = (temp: number[]) =>
-  (temp.reduce((acc, curr) => acc + curr, 0) / temp.length).toFixed(2);
+export const getAverageNumber = (temp: number[]) =>
+  (temp.reduce((acc, curr) => acc + curr, 0) / temp.length).toFixed(1);
 
-export const getMedianTemp = (temp: number[]) => {
+export const getMedianNumber = (temp: number[]) => {
   const sortedArray = temp.sort((a, b) => a - b);
   if (Math.floor(sortedArray.length / 2) == 0) {
     const middleIndex = Math.floor(sortedArray.length / 2);
-    return sortedArray[middleIndex];
+    return sortedArray[middleIndex].toFixed(1);
   } else {
     const middleIndex = Math.floor(sortedArray.length / 2);
-    return (sortedArray[middleIndex] + sortedArray[middleIndex - 1]) / 2;
+    return (
+      (sortedArray[middleIndex] + sortedArray[middleIndex - 1]) /
+      2
+    ).toFixed(1);
   }
 };
 

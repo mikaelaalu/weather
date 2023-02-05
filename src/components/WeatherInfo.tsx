@@ -1,42 +1,45 @@
-import React from "react";
 import {
-  getMinTemp,
-  getMaxTemp,
-  getAverageTemp,
-  getMedianTemp,
+  getMinNumber,
+  getMaxNumber,
+  getAverageNumber,
+  getMedianNumber,
 } from "../helpers";
 import { Weather } from "../types";
-import { Paragraph } from "./Typography";
+import { H2, ParagraphBold, ParagraphSmall } from "./Typography";
 
 type Props = {
   weather: Weather[];
 };
+
 const WeatherInfo = ({ weather }: Props) => {
   const tempratures = weather.map((w) => w.main.temp);
+  const date = weather[0].dt_txt.split(" ")[0];
 
   return (
-    <div className="flex flex-col">
-      <div className="flex gap-4">
-        <div className="flex flex-col items-center">
-          <Paragraph>Min temp:</Paragraph>
-          {getMinTemp(tempratures)}
+    <div className="flex flex-col mb-6">
+      <H2>{date}</H2>
+      <div className="flex gap-6 my-2">
+        <div className="flex flex-col items-center ">
+          <ParagraphSmall>Min</ParagraphSmall>
+          <ParagraphBold>{getMinNumber(tempratures)}</ParagraphBold>
         </div>
 
         <div className="flex flex-col items-center">
-          <Paragraph>Max temp:</Paragraph>
-          {getMaxTemp(tempratures)}
+          <ParagraphSmall>Max</ParagraphSmall>
+          <ParagraphBold>{getMaxNumber(tempratures)}</ParagraphBold>
         </div>
 
         <div className="flex flex-col items-center">
-          <Paragraph>Avrage temp:</Paragraph>
-          {getAverageTemp(tempratures)}
+          <ParagraphSmall>Avrage</ParagraphSmall>
+          <ParagraphBold>{getAverageNumber(tempratures)}</ParagraphBold>
         </div>
 
         <div className="flex flex-col items-center">
-          <Paragraph>Median temp:</Paragraph>
-          {getMedianTemp(tempratures)}
+          <ParagraphSmall>Median</ParagraphSmall>
+          <ParagraphBold>{getMedianNumber(tempratures)}</ParagraphBold>
         </div>
       </div>
+      <hr />
     </div>
   );
 };
